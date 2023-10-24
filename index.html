@@ -222,23 +222,19 @@
             .replaceAll("QUOTE_END", "</b></div>"),
           currentLike: false,
           likes: 0,
-          forceError: true,
+          // проверка обработки ошибок 
+          forceError: false,
         }),
       })
-        // .then((response) => {
-        //   console.log("Время: " + (Date.now() - startAt));
-        //   return response;
-        // })
         .then((response) => {
           if (response.status === 500) {
             // код обработки ошибки
-            throw Error("Internet server error");
+            throw Error("Server error");
           } else if (response.status === 400) {
             throw Error("Wrong request");
           } else {
             return response.json();
           }
-          // return response.json();
         })
         .then((response) => {
           return response;
@@ -256,12 +252,20 @@
         .catch((error) => {
           buttonElement.disabled = false;
           buttonElement.textContent = "Добавить";
-          if (error.message === "Internet server error") {
-            alert("Ooops, the Internet has just gone. Try a little later");
+
+          // обработка упавшего интернета
+          alert("Looks like something went wrong.");
+          commentsLoading.style.display = "none";
+          if (error.message === "Server error") {
+            alert(
+              "Ooops, the Server has just fallen down. Try a little later."
+            );
+            commentsLoading.style.display = "none";
           } else if (error.message === "Wrong request") {
             alert(
-              "The name and/or the comment are too short, minimum length is 3 symbols. Try again"
+              "The name and/or the comment are too short, minimum length is 3 symbols. Try again later."
             );
+            commentsLoading.style.display = "none";
           } else {
             return response.json();
           }
