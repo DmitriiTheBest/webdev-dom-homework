@@ -42,11 +42,11 @@ function fetchArrPromise() {
 
     comments = appComments;
     return renderComments(comments, getListComments);
-    // commentsLoader.style.display = "block";
   });
 }
 
 fetchArrPromise(fetchGet);
+commentsLoader.style.display = "none";
 
 // получение и обработка событий для кнопок like
 export function getLikeButton() {
@@ -171,6 +171,7 @@ buttonElement.addEventListener("click", () => {
       });
   };
 
+  postFetch(fetchPost);
   renderComments(comments, getListComments);
 });
 
