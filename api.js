@@ -1,6 +1,8 @@
 import { getCurrentDate } from "./date.js";
 
 const host = "https://wedev-api.sky.pro/api/v2/dmitrii-the-best-sass/comments/";
+const mainUser = "https://wedev-api.sky.pro/api/user/login";
+const newUser = "https://wedev-api.sky.pro/api/user";
 
 export const fetchGet = () => {
   return fetch(host, {
@@ -51,7 +53,7 @@ export const fetchPost = (token, inputTextElement, inputNameElement) => {
 
 //https://github.com/GlebkaF/webdev-hw-api/blob/main/pages/api/user/README.md
 export const userLogin = ({ login, password }) => {
-  return fetch("https://wedev-api.sky.pro/api/user/login", {
+  return fetch(mainUser, {
     method: "POST",
     body: JSON.stringify({
       login,
@@ -69,7 +71,7 @@ export const userLogin = ({ login, password }) => {
 };
 
 export const registerUser = ({ login, password, name }) => {
-  return fetch("https://wedev-api.sky.pro/api/user", {
+  return fetch(newUser, {
     method: "POST",
     body: JSON.stringify({
       login,

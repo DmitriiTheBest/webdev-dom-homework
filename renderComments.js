@@ -147,15 +147,16 @@ const renderApp = (comments, listComments) => {
         " " +
         new Date().toLocaleTimeString().slice(0, -3);
 
-      nameInputElement.classList.remove("error");
-      if (nameInputElement.value === "") {
-        nameInputElement.classList.add("error");
+      // nameInputElement.classList.remove("error");
+      inputNameElement.classList.remove("error");
+      if (inputNameElement.value === "") {
+        inputNameElement.classList.add("error");
         return;
       }
 
-      textareaInputElement.classList.remove("error");
-      if (textareaInputElement.value === "") {
-        textareaInputElement.classList.add("error");
+      inputTextElement.classList.remove("error");
+      if (inputTextElement.value === "") {
+        inputTextElement.classList.add("error");
         return;
       }
     });
