@@ -2,6 +2,7 @@ import { fetchPost, toggleLike } from "./api.js";
 import { getAPI } from "./main.js";
 import { renderLoginComponent } from "./components/loginComponent.js";
 import { getListComments } from "./listComments.js";
+// import { format } from "date-fns";
 
 let token = null;
 let name = null;
@@ -59,40 +60,6 @@ const renderApp = (comments, listComments) => {
       " " +
       new Date().toLocaleTimeString().slice(0, -3);
 
-    // //счетчик лайков у каждого комментария
-    // function getLikeButton() {
-    //   const likesButton = document.querySelectorAll(".like-button");
-    //   for (const like of likesButton) {
-    //     like.addEventListener("click", (event) => {
-    //       event.stopPropagation();
-
-    //       const likeIndex = like.dataset.index;
-    //       const commentsElementLikeIndex = comments[likeIndex];
-    //       like.classList.add("-loading-like");
-
-    //       if (commentsElementLikeIndex.likeComment) {
-    //         //commentsElementLikeIndex.likesNumber -= 1;
-    //         commentsElementLikeIndex.likeComment = false;
-    //         commentsElementLikeIndex.propertyColorLike =
-    //           "like-button -no-active-like";
-    //       } else {
-    //         //commentsElementLikeIndex.likesNumber += 1;
-    //         commentsElementLikeIndex.likeComment = true;
-    //         commentsElementLikeIndex.propertyColorLike =
-    //           "like-button -active-like";
-    //       }
-
-    //       const id = like.dataset.id;
-
-    //       toggleLike({ id, token });
-
-    //       delay(2000).then(() => {
-    //         getAPI();
-    //       });
-    //     });
-    //   }
-    // }
-    // getLikeButton();
     function delay(interval = 300) {
       return new Promise((resolve) => {
         setTimeout(() => {
@@ -107,7 +74,7 @@ const renderApp = (comments, listComments) => {
       for (const like of likesButton) {
         like.addEventListener("click", (event) => {
           event.stopPropagation();
-          
+
           const likeIndex = like.dataset.index;
           const commentsElementLikeIndex = comments[likeIndex];
 
