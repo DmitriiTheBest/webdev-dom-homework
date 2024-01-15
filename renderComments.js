@@ -2,7 +2,6 @@ import { fetchPost, toggleLike } from "./api.js";
 import { getAPI } from "./main.js";
 import { renderLoginComponent } from "./components/loginComponent.js";
 import { getListComments } from "./listComments.js";
-// import { format } from "date-fns";
 
 let token = null;
 let name = null;
